@@ -1,7 +1,7 @@
 {
   "name": "@mtinner/utility-functions",
-  "repository": ,
-  "version": "1.0.5",
+  "repository": "https://github.com/mtinner/utility-functions.git",
+  "version": "0.0.1",
   "description": "",
   "exports": {
     "./array": {
