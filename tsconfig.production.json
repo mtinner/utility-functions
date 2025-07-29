@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/*.stories.ts"
+  ],
+  "ts-alias": {
+    "resolveFullPaths": true
+  }
+}
