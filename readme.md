@@ -92,4 +92,3 @@ This library is written in TypeScript and includes full type definitions for bet
 ## License
 
 MIT
-```
