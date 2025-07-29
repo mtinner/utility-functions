@@ -1,6 +1,6 @@
 I notice that `toSeoString` is exported as a named export, not a default export. Here's the corrected README:
 
-```markdown
+
 # @mtinner/utility-functions
 
 A collection of TypeScript utility functions for common operations on arrays, strings, objects, and more.
