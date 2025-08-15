@@ -35,6 +35,8 @@ npm install @mtinner/utility-functions
 ### Other Utilities
 
 - **`times`** - Execute function multiple times
+- **`memoize`** - Cache function results with optional TTL and cache controls
+- **`TaskScheduler`** - Run async tasks with a concurrency limit and abort support
 
 ## Usage Examples
 
