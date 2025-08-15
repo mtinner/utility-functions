@@ -1,7 +1,7 @@
 {
   "name": "@mtinner/utility-functions",
   "repository": "https://github.com/mtinner/utility-functions.git",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "exports": {
     "./array": {
@@ -19,6 +19,14 @@
     "./to-seo-string": {
       "types": "./dist/to-seo-string.d.ts",
       "import": "./dist/to-seo-string.js"
+    },
+    "./memoize": {
+      "types": "./dist/memoize.d.ts",
+      "import": "./dist/memoize.js"
+    },
+    "./task-scheduler": {
+      "types": "./dist/task-scheduler.d.ts",
+      "import": "./dist/task-scheduler.js"
     }
   },
   "scripts": {

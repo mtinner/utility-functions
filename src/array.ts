@@ -23,14 +23,6 @@ export const intersection = <T, E extends Array<T>>(arr1: E, arr2: E): T[] => {
   return arr1.filter((x) => arr2.includes(x));
 };
 
-export function toggleEntry<T>(array: T[], entry: T) {
-  if (array.includes(entry)) {
-    return array.filter((currentEntry) => !Object.is(currentEntry, entry));
-  } else {
-    return [entry, ...array];
-  }
-}
-
 type IdObject = {
   id: any;
 };
@@ -92,10 +84,5 @@ export function partition<T>(array: T[], predicate: (elem: T) => boolean) {
       },
       [[], []],
   );
-}
-
-function isArray<T>(value: T[]): value is T[] {
-  const i = value[0]
-  return Array.isArray(value);
 }
 

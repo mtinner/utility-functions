@@ -15,7 +15,6 @@ npm install @mtinner/utility-functions
 - **`equals`** - Check if two arrays are equal
 - **`isSuperSet`** - Check if first array contains all elements of second array
 - **`intersection`** - Get common elements between two arrays
-- **`toggleEntry`** - Add or remove an entry from an array
 - **`uniqueById`** - Remove duplicates based on `id` property
 - **`unique`** - Remove duplicate values
 - **`moveElement`** - Move array element up or down
@@ -56,6 +55,33 @@ const seo = toSeoString('Hello World!'); // 'hello-world'
 // Get typed object keys
 const obj = { name: 'John', age: 30 };
 const keys = typedKeys(obj); // ('name' | 'age')[]
+
+// Memoize an expensive function (optional TTL in ms)
+const expensiveAdd = (a: number, b: number) => {
+    // pretend this is slow
+    return a + b;
+};
+
+const { memoizedFunction: add, clearCache, size } = memoize(expensiveAdd, { ttl: 5000 });
+
+add(2, 3); // 5 (computed)
+add(2, 3); // 5 (cached within TTL)
+size();    // 1 (number of non-expired cache entries)
+clearCache();
+size();    // 0
+
+// Run tasks with limited concurrency and abort support
+const scheduler = new TaskScheduler(2); // max 2 concurrent tasks
+const controller = new AbortController();
+
+const task = async (signal: AbortSignal) => {
+    await new Promise((r) => setTimeout(r, 200));
+    if (signal.aborted) throw new Error('aborted');
+    return 'done';
+};
+
+scheduler.add(task, controller.signal).then(console.log).catch(console.error);
+// controller.abort(); // optionally abort
 ```
 
 ## API Reference
@@ -63,7 +89,7 @@ const keys = typedKeys(obj); // ('name' | 'age')[]
 ### Array Functions
 
 ```typescript
-import { unique, intersection, toggleEntry } from '@mtinner/utility-functions/array';
+import { unique, intersection } from '@mtinner/utility-functions/array';
 ```
 
 ### String Functions
@@ -84,6 +110,17 @@ import { typedKeys, intersectKeysToObject } from '@mtinner/utility-functions/obj
 ```typescript
 import { times } from '@mtinner/utility-functions/times';
 ```
+
+### Memoize Function
+```typescript
+import { memoize } from '@mtinner/utility-functions/memoize';
+```
+
+### Task Scheduler
+```typescript
+import { TaskScheduler } from '@mtinner/utility-functions/task-scheduler';
+```
+
 
 ## TypeScript Support
 
